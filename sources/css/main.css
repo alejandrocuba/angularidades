@@ -1,0 +1,58 @@
+body,
+html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    background: radial-gradient(circle, #ff8000, #e06c00, #b65200, #5c2900, #1a0d00);
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    color: white;
+    font-family: sans-serif;
+}
+
+.particle {
+    position: absolute;
+    background-color: white;
+    border-radius: 50%;
+    opacity: 0.8;
+    will-change: transform, opacity, filter;
+    animation: floatParticles var(--duration) infinite ease-in-out;
+    filter: blur(var(--initial-blur));
+}
+
+@keyframes floatParticles {
+    0% {
+        transform: translate(0, 0) scale(0.8);
+        opacity: var(--opacity-start);
+        filter: blur(var(--initial-blur));
+    }
+
+    25% {
+        transform: translate(calc(var(--x-move) * 0.5px), calc(var(--y-move) * 0.5px)) scale(1.2);
+        opacity: var(--opacity-mid);
+        filter: blur(calc(var(--initial-blur) * 1.5));
+    }
+
+    50% {
+        transform: translate(calc(var(--x-move) * 1px), calc(var(--y-move) * 1px)) scale(1.5);
+        opacity: var(--opacity-high);
+        filter: blur(calc(var(--initial-blur) * 2));
+    }
+
+    75% {
+        transform: translate(calc(var(--x-move) * 0.5px), calc(var(--y-move) * 0.5px)) scale(1.2);
+        opacity: var(--opacity-mid);
+        filter: blur(calc(var(--initial-blur) * 1.5));
+    }
+
+    100% {
+        transform: translate(0, 0) scale(0.8);
+        opacity: var(--opacity-start);
+        filter: blur(var(--initial-blur));
+    }
+}
